@@ -1,14 +1,13 @@
 package offer;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.comcast.crm.generic.fileutility.FileUtility;
+
 import com.swiggy.BaseclassUtility.BaseClass;
+import com.swiggy.FileUtility.FileUtility;
 import com.swiggy.WebDriverUtility.WebDriverutility;
 
 
@@ -19,14 +18,17 @@ public class OfferTest extends BaseClass {
 		FileUtility flib=new FileUtility();
 		WebDriverutility wlib= new WebDriverutility();
 		
+		String URL=flib.getDataFromPropertiesFile("Url");
 		
-		String BROWSER = flib.getDataFromPropertiesfile("Browser");
-		String URL=flib.getDataFromPropertiesfile("Url");
-		
-		wlib.waitForPageToLoad(driver);
 		driver.get(URL);
+		wlib.waitForPageToLoad(driver);
 		driver.findElement(By.xpath("//div[@type='button']")).click();
-		
+		driver.findElement(By.xpath("//a[contains(text(),'Offers')]")).click();
+		wlib.waitForPageToLoad(driver);
+		String actualTitle=driver.getTitle();
+		Assert.assertTrue(actualTitle.contains("Offer"),"Offer page is not displayed");
+		System.out.println("Offer page is displayed successfully");
+	
 		
 		
 		

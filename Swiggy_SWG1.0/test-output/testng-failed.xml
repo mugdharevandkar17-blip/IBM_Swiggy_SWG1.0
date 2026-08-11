@@ -5,9 +5,10 @@
     <classes>
       <class name="offer.OfferTest">
         <methods>
-          <include name="verifyofferpage"/>
           <include name="configBM"/>
+          <include name="verifyofferpage"/>
           <include name="configAM"/>
+          <include name="configBC"/>
           <include name="configBS"/>
           <include name="configAC"/>
           <include name="configAS"/>
