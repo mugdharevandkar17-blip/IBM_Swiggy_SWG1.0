@@ -143,6 +143,23 @@ public class NykaTest extends BaseClass{
 	    System.out.println("matched");
 		
 	}
+	@Test
+	public void test9() {
+		
+		driver.findElement(By.xpath("//input[@class='css-13m99a4']")).sendKeys("sunscreen"+Keys.ENTER);
+		WebElement text = driver.findElement(By.xpath("//h1[@class='css-c0pzm0']"));
+		String actText = text.getText();
+		Assert.assertTrue(actText.contains("Sun Care"));
+		System.out.println("matched");
+		
+	}
+	@Test
+	public void test10() {
+		driver.findElement(By.xpath("//li[@class='MegaDropdownHeadingbox']/a[text()='men']")).click();
+		driver.findElement(By.xpath("//li[text()='Health & Nutrition']")).click();
+		driver.findElement(By.xpath("//h1[@aria-label='Wellness, 1671 products available']"));
+		
+	}
 	
 	
 }
