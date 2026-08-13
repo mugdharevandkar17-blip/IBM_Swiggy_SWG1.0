@@ -124,4 +124,25 @@ public class NykaTest extends BaseClass{
 	    Assert.assertEquals(partname, actname);
 	    System.out.println("matching");
 	}
+	
+	@Test
+	public void test8() {
+		driver.findElement(By.xpath("//span[text()='Store & Events']")).click()	;
+		Set<String> allwindow = driver.getWindowHandles();
+    	for( String id : allwindow) {
+    		
+    		@Nullable
+			String title = driver.getTitle();
+    		if(title.contains("stores"));
+    		driver.switchTo().window(id);
+    	}		
+		String partialText="Find A Nykaa Store Near You";
+        WebElement store = driver.findElement(By.xpath("//div[@class='css-jasdvx']"));
+	    String actualText = store.getText();
+	    Assert.assertEquals(partialText, actualText);
+	    System.out.println("matched");
+		
+	}
+	
+	
 }
